@@ -14,24 +14,19 @@ namespace ParseFromExcel
         static void Main(string[] args)
         {
             // var path = @"D:\Person.xlsx";
-            var excel = new ExcelQueryFactory();
-            excel.FileName = "Info.xlsx";
-            excel.AddMapping<BaseModel>(x => x.Key, "KEY");
-            excel.AddMapping<RuModel>(x => x.RuValue, "RU_VALUE");
-            excel.AddMapping<EnModel>(x => x.EnValue, "EN_VALUE");
-
-            var workflowEn = from x in excel.Worksheet<EnModel>("Sheet1")
-                           select x;
-            var workflowRu = from x in excel.Worksheet<RuModel>("Sheet1")
-                select x;
-                            
-         
-            JsonSerializer serializer = new JsonSerializer();
+            var excel = new ExcelQueryFactory("Info.xlsx");
+            var columnNames = excel.GetColumnNames("Sheet1");
             string path;
-            path = @"d:\en_json.txt";
-            SerializeToJson(serializer, workflowEn.ToList(), path);
-            path = @"d:\ru_json.txt";
-            SerializeToJson(serializer, workflowRu.ToList(), path);
+            JsonSerializer serializer = new JsonSerializer();
+
+            foreach(var name in columnNames)
+            {  
+                path = String.Format( "d:\\{0}.json", name);
+                excel.AddMapping<Values>(x => x.Value, name);
+                var workflow = from x in excel.Worksheet<Values>("Sheet1")
+                               select x;
+                SerializeToJson(serializer, workflow.ToList(), path);
+            }
 
             Console.ReadKey();
         }

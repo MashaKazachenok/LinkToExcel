@@ -60,10 +60,10 @@ namespace ViewForm
                 var excel = new ExcelQueryFactory();
                 excel.AddMapping<BaseModel>(x => x.Key, "KEY");
                 excel.AddMapping<RuModel>(x => x.RuValue, "RU_VALUE");
-                excel.AddMapping<EnModel>(x => x.EnValue, "EN_VALUE");
+                excel.AddMapping<Value>(x => x.EnValue, "EN_VALUE");
                 excel.FileName = openFileDialog1.FileName;
 
-                var workflowEn = from x in excel.Worksheet<EnModel>("Sheet1")
+                var workflowEn = from x in excel.Worksheet<Value>("Sheet1")
                     select x;
                 var workflowRu = from x in excel.Worksheet<RuModel>("Sheet1")
                     select x;
