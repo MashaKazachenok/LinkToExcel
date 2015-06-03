@@ -6,6 +6,7 @@ using System.Linq;
 using LinqToExcel;
 using Model;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ParseFromExcel
 {
@@ -15,34 +16,44 @@ namespace ParseFromExcel
         {
             // var path = @"D:\Person.xlsx";
             var excel = new ExcelQueryFactory("Info.xlsx");
-            var columnNames = excel.GetColumnNames("Sheet1");
+            var columnNames = excel.GetColumnNames("Sheet1").ToList();
             string path;
             JsonSerializer serializer = new JsonSerializer();
+            excel.AddMapping<Values>(x => x.Key, columnNames[0]);
 
-            foreach(var name in columnNames)
-            {  
-                path = String.Format( "d:\\{0}.json", name);
-                excel.AddMapping<Values>(x => x.Value, name);
-                var workflow = from x in excel.Worksheet<Values>("Sheet1")
-                               select x;
-                SerializeToJson(serializer, workflow.ToList(), path);
+            for (int i = 1; i < columnNames.Count(); i++)
+            {
+                path = String.Format("d:\\{0}.json", columnNames[i]);
+                excel.AddMapping<Values>(x => x.Value, columnNames[i]);
+                List<Values> workflows = (from x in excel.Worksheet<Values>("Sheet1")
+                                          select x).ToList();
+
+                SerializeToJson(serializer, workflows, path);
             }
 
             Console.ReadKey();
         }
 
-        private static void SerializeToJson(JsonSerializer serializer, Object workflow, string path)
+        private static void SerializeToJson(JsonSerializer serializer, List<Values> workflows, string path)
         {
+            Dictionary<string, string> points = new Dictionary<string, string>();
+
+            foreach (var item in workflows)
+            {
+                points.Add(item.Key, item.Value);
+            }
 
             using (StreamWriter strim = new StreamWriter(path))
-
-            using (JsonWriter writer = new JsonTextWriter(strim))
             {
-                serializer.Serialize(writer, workflow);
+
+                using (JsonWriter writer = new JsonTextWriter(strim))
+                {
+
+                    string json = JsonConvert.SerializeObject(points);
+                    serializer.Serialize(writer, json);
+
+                }
             }
-            
-            string json = JsonConvert.SerializeObject(workflow);
-            Console.Write(json);
         }
     }
 }
