@@ -1,0 +1,34 @@
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\ParseFromExcel.exe.config
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\ParseFromExcel.exe
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\ParseFromExcel.pdb
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\LinqToExcel.dll
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\log4net.dll
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\Model.dll
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\Remotion.Data.Linq.dll
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\Remotion.dll
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\Remotion.Interfaces.dll
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\Model.pdb
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\LinqToExcel.xml
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\log4net.xml
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\obj\Debug\ParseFromExcel.csprojResolveAssemblyReference.cache
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\obj\Debug\ParseFromExcel.exe
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\obj\Debug\ParseFromExcel.pdb
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\Newtonsoft.Json.dll
+c:\users\m.kazachenok\documents\visual studio 2013\Projects\ParseFromExcel\ParseFromExcel\bin\Debug\Newtonsoft.Json.xml
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\ParseFromExcel.exe.config
+D:\ParseFromExcel\ParseFromExcel\obj\Debug\ParseFromExcel.exe
+D:\ParseFromExcel\ParseFromExcel\obj\Debug\ParseFromExcel.pdb
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\ParseFromExcel.exe
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\ParseFromExcel.pdb
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\LinqToExcel.dll
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\log4net.dll
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\Model.dll
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\Newtonsoft.Json.dll
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\Remotion.Data.Linq.dll
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\Remotion.dll
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\Remotion.Interfaces.dll
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\Model.pdb
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\LinqToExcel.xml
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\log4net.xml
+D:\ParseFromExcel\ParseFromExcel\bin\Debug\Newtonsoft.Json.xml
+D:\ParseFromExcel\ParseFromExcel\obj\Debug\ParseFromExcel.csprojResolveAssemblyReference.cache
