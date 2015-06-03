@@ -26,3 +26,17 @@ D:\ParseFromExcel\LinqToExcel\bin\Debug\Newtonsoft.Json.xml
 D:\ParseFromExcel\LinqToExcel\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\ParseFromExcel\LinqToExcel\obj\Debug\Model.dll
 D:\ParseFromExcel\LinqToExcel\obj\Debug\Model.pdb
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\obj\Debug\Model.dll
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\obj\Debug\Model.pdb
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\Model.dll
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\Model.pdb
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\LinqToExcel.dll
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\log4net.dll
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\Newtonsoft.Json.dll
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\Remotion.Data.Linq.dll
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\Remotion.dll
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\Remotion.Interfaces.dll
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\LinqToExcel.xml
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\log4net.xml
+D:\LinkToExcel\ParseFromExcel\LinqToExcel\bin\Debug\Newtonsoft.Json.xml
