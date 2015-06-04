@@ -19,7 +19,7 @@ namespace ViewForm
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            
+
         }
 
 
@@ -33,7 +33,7 @@ namespace ViewForm
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-         //   saveFileDialog1.Filter = "xlsx files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            //   saveFileDialog1.Filter = "xlsx files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
 
@@ -45,7 +45,7 @@ namespace ViewForm
 
         private static void GetOpenFile()
         {
-          
+
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.InitialDirectory = "D:\\ParseFromExcel\\ParseFromExcel\\bin\\Debug";
             openFileDialog1.Filter = "xlsx files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
@@ -58,36 +58,15 @@ namespace ViewForm
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 var excel = new ExcelQueryFactory();
-                excel.AddMapping<BaseModel>(x => x.Key, "KEY");
-                excel.AddMapping<RuModel>(x => x.RuValue, "RU_VALUE");
-                excel.AddMapping<Value>(x => x.EnValue, "EN_VALUE");
+
                 excel.FileName = openFileDialog1.FileName;
 
-                var workflowEn = from x in excel.Worksheet<Value>("Sheet1")
-                    select x;
-                var workflowRu = from x in excel.Worksheet<RuModel>("Sheet1")
-                    select x;
+
                 JsonSerializer serializer = new JsonSerializer();
                 string path;
                 path = @"d:\en.json";
-                SerializeToJson(serializer, workflowEn.ToList(), path);
-                path = @"d:\ru.json";
-                SerializeToJson(serializer, workflowRu.ToList(), path);
+
             }
-        }
-
-        private static void SerializeToJson(JsonSerializer serializer, Object workflow, string path)
-        {
-
-            using (StreamWriter strim = new StreamWriter(path))
-
-            using (JsonWriter writer = new JsonTextWriter(strim))
-            {
-                serializer.Serialize(writer, workflow);
-            }
-
-          //  string json = JsonConvert.SerializeObject(workflow);
-           // Console.Write(json);
         }
     }
 
