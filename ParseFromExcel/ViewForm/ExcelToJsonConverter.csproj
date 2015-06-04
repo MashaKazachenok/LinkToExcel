@@ -7,8 +7,8 @@
     <ProjectGuid>{033871C1-7BD2-4D95-B2C5-0489AA66371B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ViewForm</RootNamespace>
-    <AssemblyName>ViewForm</AssemblyName>
+    <RootNamespace>ExcelToJsonConverter</RootNamespace>
+    <AssemblyName>ExcelToJsonConverter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,9 +41,6 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\packages\NLog.3.2.1\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="Remotion">
       <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.dll</HintPath>
@@ -82,8 +79,8 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,10 +98,6 @@
     <ProjectReference Include="..\LinqToExcel\Model.csproj">
       <Project>{9888680e-76f5-4878-843a-f422b5111b6c}</Project>
       <Name>Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ParseFromExcel\ParseFromExcel.csproj">
-      <Project>{e19fd344-ca12-404e-a30d-c220ad11d2a7}</Project>
-      <Name>ParseFromExcel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
