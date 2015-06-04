@@ -37,6 +37,8 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MessageText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -111,11 +113,31 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Directory for result:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(191, 154);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 8;
+            // 
+            // MessageText
+            // 
+            this.MessageText.AutoSize = true;
+            this.MessageText.Location = new System.Drawing.Point(191, 154);
+            this.MessageText.Name = "MessageText";
+            this.MessageText.Size = new System.Drawing.Size(22, 13);
+            this.MessageText.TabIndex = 9;
+            this.MessageText.Text = "     ";
+            this.MessageText.Click += new System.EventHandler(this.label4_Click);
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(435, 238);
+            this.Controls.Add(this.MessageText);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SaveFilePathBox);
@@ -125,6 +147,7 @@
             this.Controls.Add(this.button2);
             this.Name = "ViewForm";
             this.Text = "ExcelToJson converter";
+            this.Load += new System.EventHandler(this.ViewForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,6 +164,8 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label MessageText;
     }
 }
 
