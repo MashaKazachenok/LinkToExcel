@@ -1,12 +1,13 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Model;
 using LinqToExcel;
+using Model;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace ViewForm
 {
@@ -23,10 +24,11 @@ namespace ViewForm
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenFile_click(object sender, EventArgs e)
         {
+            Text = openFileDialog1.FileName;
             GetOpenFile();
-            GetSaveFile();
+           
         }
 
         private static void GetSaveFile()
@@ -66,6 +68,59 @@ namespace ViewForm
                 string path;
                 path = @"d:\en.json";
 
+            }
+        }
+
+        private void StartConwert_Click(object sender, EventArgs e)
+        {
+            string excelPath = @"d:\Info.xlsx";
+            string worksheetName = "Sheet2";
+
+            string jsonDirectory = @"d:";
+
+            var excel = new ExcelQueryFactory(excelPath);
+            var columnNames = excel.GetColumnNames(worksheetName).ToList();
+
+            excel.AddMapping<Values>(x => x.Key, columnNames[0]);
+
+            for (int i = 1; i < columnNames.Count(); i++)
+            {
+                string path = String.Format(@"{0}\{1}.json", jsonDirectory, columnNames[i]);
+                excel.AddMapping<Values>(x => x.Value, columnNames[i]);
+
+                List<Values> workflows = (from x in excel.Worksheet<Values>(worksheetName)
+                                          select x)
+                .Where(x => x.Key != null)
+                .ToList();
+
+                SerializeToJson(workflows, path);
+            }
+        }
+
+        private void SaveFile_Click(object sender, EventArgs e)
+        {
+            GetSaveFile();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Text = openFileDialog1.FileName;
+        }
+
+        private static void SerializeToJson(List<Values> workflows, string path)
+        {
+            Dictionary<string, string> points = new Dictionary<string, string>();
+
+            foreach (var item in workflows)
+            {
+                points.Add(item.Key, item.Value);
+            }
+
+            string json = JsonConvert.SerializeObject(points, Formatting.Indented);
+
+            using (var file = File.CreateText(path))
+            {
+                file.Write(json);
             }
         }
     }

@@ -1,12 +1,11 @@
-﻿
-
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using LinqToExcel;
 using Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Microsoft.SqlServer.Server;
 
 namespace ParseFromExcel
 {
@@ -14,27 +13,33 @@ namespace ParseFromExcel
     {
         static void Main(string[] args)
         {
-            // var path = @"D:\Person.xlsx";
-            var excel = new ExcelQueryFactory("Info.xlsx");
-            var columnNames = excel.GetColumnNames("Sheet1").ToList();
-            string path;
-            JsonSerializer serializer = new JsonSerializer();
+            string excelPath = @"d:\Info.xlsx";
+            string worksheetName = "Sheet2";
+
+            string jsonDirectory = @"d:";
+
+            var excel = new ExcelQueryFactory(excelPath);
+            var columnNames = excel.GetColumnNames(worksheetName).ToList();
+
             excel.AddMapping<Values>(x => x.Key, columnNames[0]);
 
             for (int i = 1; i < columnNames.Count(); i++)
             {
-                path = String.Format("d:\\{0}.json", columnNames[i]);
+                string path = String.Format(@"{0}\{1}.json", jsonDirectory, columnNames[i]);
                 excel.AddMapping<Values>(x => x.Value, columnNames[i]);
-                List<Values> workflows = (from x in excel.Worksheet<Values>("Sheet1")
-                                          select x).ToList();
 
-                SerializeToJson(serializer, workflows, path);
+                List<Values> workflows = (from x in excel.Worksheet<Values>(worksheetName)
+                                          select x)
+                .Where(x => x.Key != null)
+                .ToList();
+
+                SerializeToJson(workflows, path);
             }
 
             Console.ReadKey();
         }
 
-        private static void SerializeToJson(JsonSerializer serializer, List<Values> workflows, string path)
+        private static void SerializeToJson(List<Values> workflows, string path)
         {
             Dictionary<string, string> points = new Dictionary<string, string>();
 
@@ -43,16 +48,11 @@ namespace ParseFromExcel
                 points.Add(item.Key, item.Value);
             }
 
-            using (StreamWriter strim = new StreamWriter(path))
+            string json = JsonConvert.SerializeObject(points, Formatting.Indented);
+
+            using (var file = File.CreateText(path))
             {
-
-                using (JsonWriter writer = new JsonTextWriter(strim))
-                {
-
-                    string json = JsonConvert.SerializeObject(points);
-                    serializer.Serialize(writer, json);
-
-                }
+                file.Write(json);
             }
         }
     }
