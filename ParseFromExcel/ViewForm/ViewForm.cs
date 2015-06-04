@@ -18,57 +18,53 @@ namespace ViewForm
             InitializeComponent();
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void openFileDialog_FileOk(object sender, CancelEventArgs e)
         {
+
 
         }
 
 
         private void OpenFile_click(object sender, EventArgs e)
         {
-            Text = openFileDialog1.FileName;
-            GetOpenFile();
-           
+            var path = GetOpenFile();
+            OpenFilePathBox.Text = path;
+
         }
 
-        private static void GetSaveFile()
+        private string GetSaveFile()
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
 
             //   saveFileDialog1.Filter = "xlsx files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                // Code to write the stream goes here.
+                var folderName = folderBrowserDialog.SelectedPath;
+                return folderName;
             }
+            return null;
         }
 
-        private static void GetOpenFile()
+        private string GetOpenFile()
         {
 
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = "D:\\ParseFromExcel\\ParseFromExcel\\bin\\Debug";
-            openFileDialog1.Filter = "xlsx files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = "D:\\";
+            openFileDialog.Filter = "xlsx files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
             //  openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
+            openFileDialog.RestoreDirectory = true;
 
             //   excel.FileName = "Info.xlsx";
 
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 var excel = new ExcelQueryFactory();
-
-                excel.FileName = openFileDialog1.FileName;
-
-
-                JsonSerializer serializer = new JsonSerializer();
-                string path;
-                path = @"d:\en.json";
-
+                excel.FileName = openFileDialog.FileName;
+                return excel.FileName;
             }
+            return null;
         }
 
         private void StartConwert_Click(object sender, EventArgs e)
@@ -99,12 +95,13 @@ namespace ViewForm
 
         private void SaveFile_Click(object sender, EventArgs e)
         {
-            GetSaveFile();
+         SaveFilePathBox.Text = GetSaveFile();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            Text = openFileDialog1.FileName;
+            Text = openFileDialog.FileName;
         }
 
         private static void SerializeToJson(List<Values> workflows, string path)
@@ -122,6 +119,11 @@ namespace ViewForm
             {
                 file.Write(json);
             }
+        }
+
+        private void folderBrowserDialog_HelpRequest(object sender, EventArgs e)
+        {
+
         }
     }
 
